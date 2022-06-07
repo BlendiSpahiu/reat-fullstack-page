@@ -1,0 +1,11 @@
+query getPosts($where: posts_bool_exp) {
+  posts(where: $where) {
+    ...PostFields
+  }
+}
+
+query getPostByPk($id: Int!) {
+  post: posts_by_pk(id: $id) {
+    ...PostFields
+  }
+}

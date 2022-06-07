@@ -1,6 +1,19 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-}
+  webpack: (config) => {
+    config.resolve.fallback = {
+      fs: false,
+      path: false,
+      tls: false,
+      stream: false,
+      constants: false,
+    };
+    return config;
+  },
+  images: {
+    domains: ['upcdn.io'],
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

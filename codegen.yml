@@ -1,0 +1,20 @@
+overwrite: true
+schema:
+    - "http://localhost:8080/v1/graphql":
+          headers:
+              'x-hasura-admin-secret': 'supersecretpassword'
+              'x-hasura-role': 'anonymous'
+              'x-hasura-allowed-roles': '["user", "anonymous"]'
+documents: "gql/**/*.graphql"
+generates:
+  gql/gen/graphql.tsx:
+    plugins:
+      - "typescript"
+      - "typescript-operations"
+      - "typescript-react-apollo"
+  gql/gen/graphql.schema.json:
+    plugins:
+      - "introspection"
+    config:
+        minify: true
+

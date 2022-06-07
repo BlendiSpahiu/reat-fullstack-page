@@ -1,0 +1,15 @@
+fragment PostFields on posts {
+  id
+  title
+  content
+  description
+  userId: user_id
+  published
+  createdAt: created_at
+  imageUrl: image_url
+  user {
+    name
+    profilePicture: profile_picture
+    createdAt: created_at
+  }
+}
