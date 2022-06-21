@@ -16,19 +16,6 @@ export type Scalars = {
   timestamptz: any;
 };
 
-/** Boolean expression to compare columns of type "Boolean". All fields are combined with logical 'AND'. */
-export type Boolean_Comparison_Exp = {
-  _eq?: InputMaybe<Scalars['Boolean']>;
-  _gt?: InputMaybe<Scalars['Boolean']>;
-  _gte?: InputMaybe<Scalars['Boolean']>;
-  _in?: InputMaybe<Array<Scalars['Boolean']>>;
-  _is_null?: InputMaybe<Scalars['Boolean']>;
-  _lt?: InputMaybe<Scalars['Boolean']>;
-  _lte?: InputMaybe<Scalars['Boolean']>;
-  _neq?: InputMaybe<Scalars['Boolean']>;
-  _nin?: InputMaybe<Array<Scalars['Boolean']>>;
-};
-
 /** Boolean expression to compare columns of type "Int". All fields are combined with logical 'AND'. */
 export type Int_Comparison_Exp = {
   _eq?: InputMaybe<Scalars['Int']>;
@@ -75,27 +62,6 @@ export type String_Comparison_Exp = {
   _similar?: InputMaybe<Scalars['String']>;
 };
 
-/** mutation root */
-export type Mutation_Root = {
-  __typename?: 'mutation_root';
-  /** insert data into the table: "users" */
-  insert_users?: Maybe<Users_Mutation_Response>;
-  /** insert a single row into the table: "users" */
-  insert_users_one?: Maybe<Users>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_UsersArgs = {
-  objects: Array<Users_Insert_Input>;
-};
-
-
-/** mutation root */
-export type Mutation_RootInsert_Users_OneArgs = {
-  object: Users_Insert_Input;
-};
-
 /** column ordering options */
 export enum Order_By {
   /** in ascending order, nulls last */
@@ -115,12 +81,12 @@ export enum Order_By {
 /** columns and relationships of "posts" */
 export type Posts = {
   __typename?: 'posts';
-  content: Scalars['String'];
+  content?: Maybe<Scalars['String']>;
   created_at: Scalars['timestamptz'];
   description?: Maybe<Scalars['String']>;
   id: Scalars['Int'];
   image_url?: Maybe<Scalars['String']>;
-  published: Scalars['Boolean'];
+  status: Scalars['Int'];
   title: Scalars['String'];
   updated_at: Scalars['timestamptz'];
   /** An object relationship */
@@ -146,6 +112,7 @@ export type Posts_Aggregate_Order_By = {
 /** order by avg() on columns of table "posts" */
 export type Posts_Avg_Order_By = {
   id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
@@ -159,7 +126,7 @@ export type Posts_Bool_Exp = {
   description?: InputMaybe<String_Comparison_Exp>;
   id?: InputMaybe<Int_Comparison_Exp>;
   image_url?: InputMaybe<String_Comparison_Exp>;
-  published?: InputMaybe<Boolean_Comparison_Exp>;
+  status?: InputMaybe<Int_Comparison_Exp>;
   title?: InputMaybe<String_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
   user?: InputMaybe<Users_Bool_Exp>;
@@ -173,6 +140,7 @@ export type Posts_Max_Order_By = {
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   image_url?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
@@ -185,6 +153,7 @@ export type Posts_Min_Order_By = {
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   image_url?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
@@ -197,7 +166,7 @@ export type Posts_Order_By = {
   description?: InputMaybe<Order_By>;
   id?: InputMaybe<Order_By>;
   image_url?: InputMaybe<Order_By>;
-  published?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   title?: InputMaybe<Order_By>;
   updated_at?: InputMaybe<Order_By>;
   user?: InputMaybe<Users_Order_By>;
@@ -217,7 +186,7 @@ export enum Posts_Select_Column {
   /** column name */
   ImageUrl = 'image_url',
   /** column name */
-  Published = 'published',
+  Status = 'status',
   /** column name */
   Title = 'title',
   /** column name */
@@ -229,42 +198,49 @@ export enum Posts_Select_Column {
 /** order by stddev() on columns of table "posts" */
 export type Posts_Stddev_Order_By = {
   id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
 /** order by stddev_pop() on columns of table "posts" */
 export type Posts_Stddev_Pop_Order_By = {
   id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
 /** order by stddev_samp() on columns of table "posts" */
 export type Posts_Stddev_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
 /** order by sum() on columns of table "posts" */
 export type Posts_Sum_Order_By = {
   id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
 /** order by var_pop() on columns of table "posts" */
 export type Posts_Var_Pop_Order_By = {
   id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
 /** order by var_samp() on columns of table "posts" */
 export type Posts_Var_Samp_Order_By = {
   id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
 /** order by variance() on columns of table "posts" */
 export type Posts_Variance_Order_By = {
   id?: InputMaybe<Order_By>;
+  status?: InputMaybe<Order_By>;
   user_id?: InputMaybe<Order_By>;
 };
 
@@ -386,15 +362,15 @@ export type Timestamptz_Comparison_Exp = {
 /** columns and relationships of "users" */
 export type Users = {
   __typename?: 'users';
-  created_at: Scalars['timestamptz'];
+  created_at?: Maybe<Scalars['timestamptz']>;
   email: Scalars['String'];
   id: Scalars['Int'];
   name: Scalars['String'];
   /** An array relationship */
   posts: Array<Posts>;
   profile_picture?: Maybe<Scalars['String']>;
-  role: Scalars['String'];
-  updated_at: Scalars['timestamptz'];
+  role: Scalars['Int'];
+  updated_at?: Maybe<Scalars['timestamptz']>;
 };
 
 
@@ -418,27 +394,8 @@ export type Users_Bool_Exp = {
   name?: InputMaybe<String_Comparison_Exp>;
   posts?: InputMaybe<Posts_Bool_Exp>;
   profile_picture?: InputMaybe<String_Comparison_Exp>;
-  role?: InputMaybe<String_Comparison_Exp>;
+  role?: InputMaybe<Int_Comparison_Exp>;
   updated_at?: InputMaybe<Timestamptz_Comparison_Exp>;
-};
-
-/** input type for inserting data into table "users" */
-export type Users_Insert_Input = {
-  created_at?: InputMaybe<Scalars['timestamptz']>;
-  email?: InputMaybe<Scalars['String']>;
-  id?: InputMaybe<Scalars['Int']>;
-  name?: InputMaybe<Scalars['String']>;
-  password?: InputMaybe<Scalars['String']>;
-  updated_at?: InputMaybe<Scalars['timestamptz']>;
-};
-
-/** response of any mutation on the table "users" */
-export type Users_Mutation_Response = {
-  __typename?: 'users_mutation_response';
-  /** number of rows affected by the mutation */
-  affected_rows: Scalars['Int'];
-  /** data from the rows affected by the mutation */
-  returning: Array<Users>;
 };
 
 /** Ordering options when selecting data from "users". */
@@ -471,21 +428,22 @@ export enum Users_Select_Column {
   UpdatedAt = 'updated_at'
 }
 
-export type PostFieldsFragment = { __typename?: 'posts', id: number, title: string, content: string, description?: string | null, published: boolean, userId?: number | null, createdAt: any, imageUrl?: string | null, user?: { __typename?: 'users', name: string, profilePicture?: string | null, createdAt: any } | null };
+export type PostFieldsFragment = { __typename?: 'posts', id: number, title: string, content?: string | null, description?: string | null, status: number, userId?: number | null, createdAt: any, imageUrl?: string | null, user?: { __typename?: 'users', name: string, profilePicture?: string | null, createdAt?: any | null } | null };
 
 export type GetPostsQueryVariables = Exact<{
   where?: InputMaybe<Posts_Bool_Exp>;
+  orderBy?: InputMaybe<Array<Posts_Order_By> | Posts_Order_By>;
 }>;
 
 
-export type GetPostsQuery = { __typename?: 'query_root', posts: Array<{ __typename?: 'posts', id: number, title: string, content: string, description?: string | null, published: boolean, userId?: number | null, createdAt: any, imageUrl?: string | null, user?: { __typename?: 'users', name: string, profilePicture?: string | null, createdAt: any } | null }> };
+export type GetPostsQuery = { __typename?: 'query_root', posts: Array<{ __typename?: 'posts', id: number, title: string, content?: string | null, description?: string | null, status: number, userId?: number | null, createdAt: any, imageUrl?: string | null, user?: { __typename?: 'users', name: string, profilePicture?: string | null, createdAt?: any | null } | null }> };
 
 export type GetPostByPkQueryVariables = Exact<{
   id: Scalars['Int'];
 }>;
 
 
-export type GetPostByPkQuery = { __typename?: 'query_root', post?: { __typename?: 'posts', id: number, title: string, content: string, description?: string | null, published: boolean, userId?: number | null, createdAt: any, imageUrl?: string | null, user?: { __typename?: 'users', name: string, profilePicture?: string | null, createdAt: any } | null } | null };
+export type GetPostByPkQuery = { __typename?: 'query_root', post?: { __typename?: 'posts', id: number, title: string, content?: string | null, description?: string | null, status: number, userId?: number | null, createdAt: any, imageUrl?: string | null, user?: { __typename?: 'users', name: string, profilePicture?: string | null, createdAt?: any | null } | null } | null };
 
 export const PostFieldsFragmentDoc = gql`
     fragment PostFields on posts {
@@ -493,8 +451,8 @@ export const PostFieldsFragmentDoc = gql`
   title
   content
   description
+  status
   userId: user_id
-  published
   createdAt: created_at
   imageUrl: image_url
   user {
@@ -505,8 +463,8 @@ export const PostFieldsFragmentDoc = gql`
 }
     `;
 export const GetPostsDocument = gql`
-    query getPosts($where: posts_bool_exp) {
-  posts(where: $where) {
+    query getPosts($where: posts_bool_exp, $orderBy: [posts_order_by!]) {
+  posts(where: $where, order_by: $orderBy) {
     ...PostFields
   }
 }
@@ -525,6 +483,7 @@ export const GetPostsDocument = gql`
  * const { data, loading, error } = useGetPostsQuery({
  *   variables: {
  *      where: // value for 'where'
+ *      orderBy: // value for 'orderBy'
  *   },
  * });
  */

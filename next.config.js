@@ -13,6 +13,7 @@ const nextConfig = {
   },
   images: {
     domains: ['upcdn.io'],
+    layoutRaw: true,
   },
 };
 

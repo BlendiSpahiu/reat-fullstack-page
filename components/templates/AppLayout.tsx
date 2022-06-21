@@ -5,7 +5,6 @@ import { AppLayoutProps } from './AppLayout.props';
 export const AppLayout = ({ content }: AppLayoutProps): ReactElement => (
   <>
     <Navbar />
-
-    <main className="mx-12 mt-16 md:mx-40">{content}</main>
+    <main className="mx-6 mt-16 md:mx-40">{content}</main>
   </>
 );
